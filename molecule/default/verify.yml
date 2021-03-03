@@ -10,5 +10,4 @@
       cmd: "elasticsearch --version"
     environment:
       PATH: "$PATH:{{ elastic_home }}/bin"
-      # PATH: "$PATH:/opt/elastic/elasticsearch-7.11.1/bin"
     changed_when: false
