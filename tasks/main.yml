@@ -17,7 +17,8 @@
     until: download_elasticsearch_remote_binaries is succeeded
     when: elastic_distr_type == 'remote'
   
-  - name: Create directrory for Elasticsearch
+  - name: Create directory for Elasticsearch
+    become: true
     file:
       state: directory
       path: "{{ elastic_home }}"
@@ -34,7 +35,7 @@
       - skip_ansible_lint
       - elastic
   - name: Set environment Elastic
-    become: yes
+    become: true
     template:
       src: templates/elk.sh.j2
       dest: /etc/profile.d/elk.sh
