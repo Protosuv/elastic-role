@@ -40,3 +40,14 @@
       src: templates/elk.sh.j2
       dest: /etc/profile.d/elk.sh
     tags: elastic
+  - name: Set owner for kibana directory
+    become: yes
+    ansible.builtin.file:
+      path: "{{ kibana_home }}"
+      state: directory
+      owner: vagrant
+      group: vagrant
+      recurse: yes
+    tags: kibana
+    when: environ_type == 'vagrant'
+  
